@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -32,10 +31,6 @@ kotlin {
     }
     
     jvm("desktop")
-
-    room {
-        schemaDirectory("$projectDir/schemas")
-    }
 
     sourceSets {
         val desktopMain by getting
@@ -62,15 +57,14 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.kotlinx.serialization.json)
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.androidx.constraintlayout)
-            implementation(libs.sqlite.bundled)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             api(libs.koin.core)
 
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
+            api(libs.datastore)
+            api(libs.datastore.prefs)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -79,10 +73,6 @@ kotlin {
         }
         nativeMain.dependencies {
             implementation(libs.ktor.client.darwin)
-        }
-
-        dependencies {
-            ksp(libs.androidx.room.compiler)
         }
     }
 }
@@ -111,6 +101,12 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.android.kotlinCompilerExt.get()
+    }
+    buildFeatures {
+        compose = true
     }
 }
 

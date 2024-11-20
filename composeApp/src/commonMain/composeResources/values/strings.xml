@@ -1,45 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-    <string name="search_hint">Search...</string>
-    <string name="close_hint">Clear search</string>
-    <string name="search_results">Search Results</string>
-    <string name="favorites">Favorites</string>
-    <string name="no_search_results">Oops, there aren't any books for your search query.</string>
-    <string name="no_favorite_books">No favorite books yet.</string>
-    <string name="book_cover">Book cover</string>
-    <string name="rating">Rating</string>
-    <string name="pages">Pages</string>
-    <string name="languages">Languages</string>
-    <string name="synopsis">Synopsis</string>
-    <string name="go_back">Go back</string>
-    <string name="mark_as_favorite">Mark as favorite</string>
-    <string name="remove_from_favorites">Remove from favorites</string>
-    <string name="description_unavailable">Description not available.</string>
-    <string name="error_disk_full">Oops, it seems like your disk is full.</string>
-    <string name="error_unknown">Oops, something went wrong.</string>
-    <string name="error_request_timeout">The request timed out.</string>
-    <string name="error_no_internet">Couldn't reach server, please check your internet connection.</string>
-    <string name="error_too_many_requests">Your quota seems to be exceeded.</string>
-    <string name="error_serialization">Couldn't parse data.</string>
-
     <string name="app_name">ChildStars</string>
     <string name="registration_title">Введите свой адрес электронной почты</string>
-    <string name="registration_titleError">Необходим e-mail</string>
-    <string name="registration_passError">Введите пароль</string>
+    <string name="registration_title_error">Необходим e-mail</string>
     <string name="registration_title2">Войти в приложение</string>
-    <string name="registration_name">Введите имя</string>
-    <string name="registration_initText">Регистрация родителя</string>
-    <string name="registration_childInitText">Регистрация в телефоне ребёнка</string>
-    <string name="registration_addChild">Добавить ребёнка</string>
-    <string name="registration_childCodeDescription">Введите этот код при регистрации на устройстве ребёнка</string>
-    <string name="registration_checkChildCode">Проверить</string>
-    <string name="registration_childName">Введите имя ребёнка</string>
-    <string name="registration_addChildCode">Введите код</string>
-    <string name="registration_emailHint">Введите e-mail</string>
-    <string name="registration_passwordHint">Введите пароль</string>
-    <string name="alertCommon">Вы что-то сделали не так или Сергей этого пока не сделал</string>
-    <string name="activityTitle_btnPositiveText">ОК</string>
-    <string name="activityTitle_btnNegativeText">Отмена</string>
+    <string name="registration_name_hint">Введите имя</string>
+    <string name="registration_parent_init">Регистрация родителя</string>
+    <string name="registration_child_init">Регистрация в телефоне ребёнка</string>
+    <string name="registration_add_child">Добавить ребёнка</string>
+    <string name="registration_child_code_description">Введите этот код при регистрации на устройстве ребёнка</string>
+    <string name="registration_check_child_code">Проверить</string>
+    <string name="registration_child_name_hint">Введите имя ребёнка</string>
+    <string name="registration_child_code_hint">Введите код</string>
+    <string name="registration_email_hint">Введите e-mail</string>
+    <string name="registration_password_hint">Введите пароль</string>
+    <string name="alert_common">Вы что-то сделали не так или Сергей этого пока не сделал</string>
+    <string name="alert_btn_positive_text">ОК</string>
+    <string name="alert_btn_negative_text">Отмена</string>
 
     <string name="alert_error_unknown_message">При выполнении действия произошла неизвестная ошибка.</string>
     <string name="alert_error_otp">Ошибка при запросе кода.</string>
@@ -49,11 +26,11 @@
     <string name="alert_error_invalid_message">Пожалуйста, введите корректные данные и повторите попытку.</string>
     <string name="alert_error_maintenance_message">В настоящее время ведутся технические работы. Пожалуйста, повторите попытку позднее.</string>
     <string name="alert_error_failed_message">Серверу не удалось успешно исполнить Ваш запрос.</string>
-    <string name="alertRegistrationEmail">Проверьте корректность введения электронной почты.</string>
-    <string name="alertConfirmRegistration_incorrect">Неверно введен код.</string>
-    <string name="alertConfirmRegistration_timeOut">Время действия пароля истекло.</string>
-    <string name="alertConfirmRegistration_loginAttemptsLimitExceeded">Превышено количество попыток ввода.</string>
+    <string name="alert_registration_email">Проверьте корректность введения электронной почты.</string>
+    <string name="alert_confirm_registration_incorrect">Неверно введен код.</string>
+    <string name="alert_confirm_registration_time_out">Время действия пароля истекло.</string>
+    <string name="alert_confirm_registration_login_attempts_limit_exceeded">Превышено количество попыток ввода.</string>
     <string name="alert_error_network">Произошла ошибка при запросе данных.</string>
-    <string name="alertLetterLanguage">Ф.И.О. должны быть написаны на одном языке.</string>
-    <string name="alertPayBtnToMainActivity"><u>На главный экран</u></string>
+    <string name="alert_letter_language">Ф.И.О. должны быть написаны на одном языке.</string>
+    <string name="alert_pay_btn_to_main_screen"><u>На главный экран</u></string>
 </resources>
