@@ -19,6 +19,7 @@
     <string name="alert_btn_negative_text">Отмена</string>
 
     <string name="alert_error_unknown_message">При выполнении действия произошла неизвестная ошибка.</string>
+    <string name="alert_error_timeout_message">Превышено время ожидания ответа от сервера</string>
     <string name="alert_error_otp">Ошибка при запросе кода.</string>
     <string name="alert_error_unknown_user">Пользователь с такими данными не найден, проверьте введённые логин и пароль, либо зарегистрируйтесь.</string>
     <string name="alert_error_forbidden_message">Недостаточно прав для выполнения действия.</string>

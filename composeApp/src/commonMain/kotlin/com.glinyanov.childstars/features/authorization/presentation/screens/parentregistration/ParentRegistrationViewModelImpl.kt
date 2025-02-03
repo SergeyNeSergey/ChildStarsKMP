@@ -82,7 +82,7 @@ internal class ParentRegistrationViewModelImpl(
                 val name = nameState.first()
                 when {
                     email.isBlank() -> throw AuthErrors.IncorrectEmail
-                    password.isBlank() -> throw AuthErrors.IncorrectDataError
+                    password.isBlank() -> throw AuthErrors.IncorrectData
                     name.isBlank() -> throw AuthErrors.IncorrectName
                 }
 

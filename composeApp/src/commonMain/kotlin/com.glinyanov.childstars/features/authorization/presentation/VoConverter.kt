@@ -7,6 +7,9 @@ import childstars.composeapp.generated.resources.alert_confirm_registration_logi
 import childstars.composeapp.generated.resources.alert_confirm_registration_time_out
 import childstars.composeapp.generated.resources.alert_error_forbidden_message
 import childstars.composeapp.generated.resources.alert_error_invalid_message
+import childstars.composeapp.generated.resources.alert_error_timeout_message
+import childstars.composeapp.generated.resources.alert_error_unknown_message
+import childstars.composeapp.generated.resources.alert_error_unknown_user
 import childstars.composeapp.generated.resources.alert_letter_language
 import childstars.composeapp.generated.resources.alert_registration_email
 import childstars.composeapp.generated.resources.main_logo
@@ -40,7 +43,7 @@ internal class VoConverter {
             parentNameMessage = parentName,
             emailHint = getString(Res.string.registration_email_hint),
             emailMessage = email,
-            passwordHint =  getString(Res.string.registration_password_hint),
+            passwordHint = getString(Res.string.registration_password_hint),
             passwordMessage = password,
             isFieldsNotEmpty = parentName.isNotBlank() && email.isNotBlank() && password.isNotBlank(),
             loginButtonText = getString(Res.string.registration_title2),
@@ -85,12 +88,15 @@ internal class VoConverter {
         return AppAlertDialogVo(
             title = when (error) {
                 is AuthErrors.IncorrectOtp -> getString(Res.string.alert_confirm_registration_incorrect)
-                is AuthErrors.IncorrectDataError -> getString(Res.string.alert_error_invalid_message)
+                is AuthErrors.IncorrectData -> getString(Res.string.alert_error_invalid_message)
                 is AuthErrors.IncorrectName -> getString(Res.string.alert_letter_language)
                 is AuthErrors.ToManyAttempts -> {
                     getString(Res.string.alert_confirm_registration_login_attempts_limit_exceeded)
                 }
 
+                is AuthErrors.SomethingWrong -> getString(Res.string.alert_error_unknown_message)
+                is AuthErrors.TimeOut -> getString(Res.string.alert_error_timeout_message)
+                is AuthErrors.UnknownUser -> getString(Res.string.alert_error_unknown_user)
                 is AuthErrors.PasswordExpired -> getString(Res.string.alert_confirm_registration_time_out)
                 is AuthErrors.IncorrectEmail -> getString(Res.string.alert_registration_email)
                 is AuthErrors.Forbidden -> getString(Res.string.alert_error_forbidden_message)

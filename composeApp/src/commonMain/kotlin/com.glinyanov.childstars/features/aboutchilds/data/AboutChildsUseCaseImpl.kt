@@ -1,7 +1,7 @@
 package com.glinyanov.childstars.features.aboutchilds.data
 
 import com.glinyanov.childstars.core.data.local.CommonPrefsRepository
-import com.glinyanov.childstars.core.data.remote.UnauthorizedDataError
+import com.glinyanov.childstars.core.data.remote.UnauthorizedDataIOException
 import com.glinyanov.childstars.core.domain.OtpDo
 import com.glinyanov.childstars.features.aboutchilds.data.mappers.Mapper
 import com.glinyanov.childstars.features.aboutchilds.data.repository.AboutChildsRepository
@@ -20,7 +20,7 @@ internal class AboutChildsUseCaseImpl(
         return try {
             val userId = prefsRepository.getUserId() ?: throw AboutChildsErrors.Forbidden
             mapper.toDo(repository.getOTPCode(userId))
-        } catch (ex: UnauthorizedDataError) {
+        } catch (ex: UnauthorizedDataIOException) {
             prefsRepository.clearUserId()
             throw AboutChildsErrors.Forbidden
         } catch (ex: IOException) {
@@ -32,7 +32,7 @@ internal class AboutChildsUseCaseImpl(
         return try {
             val userId = prefsRepository.getUserId() ?: throw AboutChildsErrors.Forbidden
             mapper.toDo(repository.getChilds(userId))
-        } catch (ex: UnauthorizedDataError) {
+        } catch (ex: UnauthorizedDataIOException) {
             prefsRepository.clearUserId()
             throw AboutChildsErrors.Forbidden
         } catch (ex: IOException) {

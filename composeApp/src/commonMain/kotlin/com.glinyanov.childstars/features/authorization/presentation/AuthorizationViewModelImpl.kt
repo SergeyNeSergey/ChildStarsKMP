@@ -46,7 +46,7 @@ internal class AuthorizationViewModelImpl(
                 val password = passwordState.first()
                 val email = emailState.first()
                 if (email.isBlank()) throw AuthErrors.IncorrectEmail
-                if (password.isBlank()) throw AuthErrors.IncorrectDataError
+                if (password.isBlank()) throw AuthErrors.IncorrectData
                 useCase.login(email = email, password = password)
                 navigator.onEnterAction()
             }

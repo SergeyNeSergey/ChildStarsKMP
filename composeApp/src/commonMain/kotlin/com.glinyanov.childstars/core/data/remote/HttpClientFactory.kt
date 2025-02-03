@@ -16,7 +16,7 @@ import kotlinx.serialization.json.Json
 object HttpClientFactory {
 
     private const val TIME_OUT = 10_000L
-    const val BASE_URL = "http://95.25.130.185"
+    const val BASE_URL = "http://192.168.88.253:8080/"
 
     fun create(engine: HttpClientEngine): HttpClient {
         return HttpClient(engine) {
