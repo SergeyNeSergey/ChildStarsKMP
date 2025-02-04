@@ -60,24 +60,24 @@ internal class AuthorizationRepositoryImpl(
     private fun ResponseWrapperDto<RegistrationResponse>.getRawResult(): Int {
         return when {
             operationStatus.value == OperationStatus.FORBIDDEN -> {
-                throw UnauthorizedDataIOException()
+                throw UnauthorizedDataIOException(responseData?.detailedStatusDescription)
             }
 
             operationStatus.value == OperationStatus.SUCCESS && responseData != null -> {
                 responseData.getUserId()
             }
 
-            else -> throw IOException()
+            else -> throw IOException(responseData?.detailedStatusDescription)
         }
     }
 
     private fun RegistrationResponse.getUserId(): Int {
         return when (detailedStatus?.value) {
             RegistrationResult.TIMEOUT -> throw SocketTimeoutException(message = "408")
-            RegistrationResult.BLOCKED -> throw BlockedIOException()
-            RegistrationResult.ALREADY_USED -> throw AlreadyUsedIOException()
-            RegistrationResult.ATTEMPTS_LIMIT_EXCEEDED -> throw TooManyAttemptsIOException()
-            RegistrationResult.INCORRECT_PASSWORD -> throw IncorrectPasswordIOException()
+            RegistrationResult.BLOCKED -> throw BlockedIOException(detailedStatusDescription)
+            RegistrationResult.ALREADY_USED -> throw AlreadyUsedIOException(detailedStatusDescription)
+            RegistrationResult.ATTEMPTS_LIMIT_EXCEEDED -> throw TooManyAttemptsIOException(detailedStatusDescription)
+            RegistrationResult.INCORRECT_PASSWORD -> throw IncorrectPasswordIOException(detailedStatusDescription)
             else -> id
         }
     }

@@ -11,9 +11,9 @@ suspend inline fun <reified T> responseToResult(
     val response = execute()
     return when(response.status.value) {
         in 200..299 -> response.body<T>()
-        401 -> throw UnauthorizedDataIOException()
+        401 -> throw UnauthorizedDataIOException(message = null)
         408 -> throw SocketTimeoutException(message = "408")
-        429 -> throw TooManyAttemptsIOException()
+        429 -> throw TooManyAttemptsIOException(message = null)
         else -> throw IOException()
     }
 }

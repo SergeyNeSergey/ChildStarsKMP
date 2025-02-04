@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ResponseWrapperDto<T>(
-    val operationStatus: OperationStatus,
+    val operationStatus: OperationStatus = OperationStatus(OperationStatus.SUCCESS),
     val responseData: T? = null
 )

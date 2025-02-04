@@ -86,7 +86,7 @@ internal class VoConverter {
 
     private suspend fun toVo(error: AuthErrors): AppAlertDialogVo {
         return AppAlertDialogVo(
-            title = when (error) {
+            title = error.message ?: when (error) {
                 is AuthErrors.IncorrectOtp -> getString(Res.string.alert_confirm_registration_incorrect)
                 is AuthErrors.IncorrectData -> getString(Res.string.alert_error_invalid_message)
                 is AuthErrors.IncorrectName -> getString(Res.string.alert_letter_language)

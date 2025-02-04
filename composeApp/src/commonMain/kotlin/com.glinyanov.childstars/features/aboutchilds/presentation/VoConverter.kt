@@ -26,7 +26,7 @@ internal class VoConverter {
         childs: List<ChildDo>,
         isChildsLoading: Boolean,
         error: AboutChildsErrors?,
-    ):ChildListScreenVo {
+    ): ChildListScreenVo {
         return ChildListScreenVo(
             drawableRes = Res.drawable.main_logo,
             addChildText = getString(Res.string.registration_add_child),
@@ -52,7 +52,7 @@ internal class VoConverter {
 
     private suspend fun toVo(error: AboutChildsErrors): AppAlertDialogVo {
         return AppAlertDialogVo(
-            title = when (error) {
+            title = error.message ?: when (error) {
                 is AboutChildsErrors.OtpError -> getString(Res.string.alert_error_otp)
                 is AboutChildsErrors.AboutChildError -> getString(Res.string.alert_error_network)
                 is AboutChildsErrors.Forbidden -> getString(Res.string.alert_error_forbidden_message)
@@ -70,6 +70,7 @@ internal class VoConverter {
                 checkButtonText = getString(Res.string.registration_check_child_code),
                 codeText = domainObject.otp
             )
+
             else -> CodeItemVo(state = CodeItemVo.State.Hidden)
         }
     }

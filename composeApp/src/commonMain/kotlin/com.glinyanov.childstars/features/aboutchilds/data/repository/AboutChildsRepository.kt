@@ -18,14 +18,14 @@ internal class AboutChildsRepositoryImpl(
         val result = remoteDataSource.getChilds(userId)
         return when {
             result.operationStatus.value == OperationStatus.FORBIDDEN -> {
-                throw UnauthorizedDataIOException()
+                throw UnauthorizedDataIOException(result.responseData?.detailedStatusDescription)
             }
 
             result.operationStatus.value == OperationStatus.SUCCESS && result.responseData != null -> {
                 result.responseData.childList
             }
 
-            else -> throw IOException()
+            else -> throw IOException(message = result.responseData?.detailedStatusDescription)
         }
     }
 
@@ -33,7 +33,7 @@ internal class AboutChildsRepositoryImpl(
         val result = remoteDataSource.getOTPCode(userId)
         return when {
             result.operationStatus.value == OperationStatus.FORBIDDEN -> {
-                throw UnauthorizedDataIOException()
+                throw UnauthorizedDataIOException(result.responseData?.detailedStatusDescription)
             }
 
             result.operationStatus.value == OperationStatus.SUCCESS
@@ -41,7 +41,7 @@ internal class AboutChildsRepositoryImpl(
                 result.responseData.otp
             }
 
-            else -> throw IOException()
+            else -> throw IOException(result.responseData?.detailedStatusDescription)
         }
 
     }

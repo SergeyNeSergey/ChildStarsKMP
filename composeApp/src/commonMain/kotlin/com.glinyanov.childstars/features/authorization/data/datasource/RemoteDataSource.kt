@@ -20,7 +20,7 @@ internal class RemoteDataSourceImpl(private val httpClient: HttpClient): RemoteD
 
     override suspend fun registration(user: UserDto): ResponseWrapperDto<RegistrationResponse> {
         return responseToResult {
-            httpClient.post(HttpClientFactory.BASE_URL + "/login") {
+            httpClient.post(HttpClientFactory.BASE_URL + "/addUser") {
                 contentType(ContentType.Application.Json)
                 setBody(user)
             }
@@ -29,7 +29,7 @@ internal class RemoteDataSourceImpl(private val httpClient: HttpClient): RemoteD
 
     override suspend fun login(user: UserDto): ResponseWrapperDto<RegistrationResponse> {
         return responseToResult {
-            httpClient.post(HttpClientFactory.BASE_URL + "/addUser") {
+            httpClient.post(HttpClientFactory.BASE_URL + "/login") {
                 contentType(ContentType.Application.Json)
                 setBody(user)
             }
