@@ -49,12 +49,12 @@ internal class AuthorizationUseCaseImpl(
             block.invoke()
         } catch (exc: IOException) {
             throw when (exc) {
-                is SocketTimeoutException -> AuthErrors.IncorrectData
-                is BlockedIOException -> AuthErrors.Forbidden
-                is AlreadyUsedIOException -> AuthErrors.Forbidden
-                is TooManyAttemptsIOException -> AuthErrors.ToManyAttempts
-                is IncorrectPasswordIOException -> AuthErrors.UnknownUser
-                else -> AuthErrors.SomethingWrong
+                is SocketTimeoutException -> AuthErrors.IncorrectData(exc.message)
+                is BlockedIOException -> AuthErrors.Forbidden(exc.message)
+                is AlreadyUsedIOException -> AuthErrors.Forbidden(exc.message)
+                is TooManyAttemptsIOException -> AuthErrors.ToManyAttempts(exc.message)
+                is IncorrectPasswordIOException -> AuthErrors.UnknownUser(exc.message)
+                else -> AuthErrors.SomethingWrong(exc.message)
             }
         }
     }

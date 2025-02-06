@@ -18,25 +18,25 @@ internal class AboutChildsUseCaseImpl(
 
     override suspend fun addChild(): OtpDo {
         return try {
-            val userId = prefsRepository.getUserId() ?: throw AboutChildsErrors.Forbidden
+            val userId = prefsRepository.getUserId() ?: throw AboutChildsErrors.Forbidden(null)
             mapper.toDo(repository.getOTPCode(userId))
         } catch (ex: UnauthorizedDataIOException) {
             prefsRepository.clearUserId()
-            throw AboutChildsErrors.Forbidden
+            throw AboutChildsErrors.Forbidden(null)
         } catch (ex: IOException) {
-            throw AboutChildsErrors.OtpError
+            throw AboutChildsErrors.OtpError(null)
         }
     }
 
     override suspend fun getChilds(): List<ChildDo> {
         return try {
-            val userId = prefsRepository.getUserId() ?: throw AboutChildsErrors.Forbidden
+            val userId = prefsRepository.getUserId() ?: throw AboutChildsErrors.Forbidden(null)
             mapper.toDo(repository.getChilds(userId))
         } catch (ex: UnauthorizedDataIOException) {
             prefsRepository.clearUserId()
-            throw AboutChildsErrors.Forbidden
+            throw AboutChildsErrors.Forbidden(null)
         } catch (ex: IOException) {
-            throw AboutChildsErrors.AboutChildError
+            throw AboutChildsErrors.AboutChildError(null)
         }
     }
 }

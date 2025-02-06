@@ -49,8 +49,8 @@ internal class ChildRegistrationViewModelImpl(
                 val otpCode = otpCodeState.first()
                 val name = nameTextState.first()
                 when {
-                    name.isBlank() -> throw AuthErrors.IncorrectEmail
-                    otpCode.isBlank() -> throw AuthErrors.IncorrectData
+                    name.isBlank() -> throw AuthErrors.IncorrectEmail(null)
+                    otpCode.isBlank() -> throw AuthErrors.IncorrectData(null)
                 }
                 useCase.childRegistration(name = name, otpCode = OtpDo(otpCode))
                 navigator.onEnterAction()

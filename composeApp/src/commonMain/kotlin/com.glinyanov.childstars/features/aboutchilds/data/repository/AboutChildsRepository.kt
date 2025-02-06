@@ -25,7 +25,7 @@ internal class AboutChildsRepositoryImpl(
                 result.responseData.childList
             }
 
-            else -> throw IOException(message = result.responseData?.detailedStatusDescription)
+            else -> throw IOException(result.responseData?.detailedStatusDescription)
         }
     }
 

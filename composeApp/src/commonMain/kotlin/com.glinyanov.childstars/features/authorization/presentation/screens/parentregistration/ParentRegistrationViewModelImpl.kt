@@ -81,9 +81,9 @@ internal class ParentRegistrationViewModelImpl(
                 val email = emailState.first()
                 val name = nameState.first()
                 when {
-                    email.isBlank() -> throw AuthErrors.IncorrectEmail
-                    password.isBlank() -> throw AuthErrors.IncorrectData
-                    name.isBlank() -> throw AuthErrors.IncorrectName
+                    email.isBlank() -> throw AuthErrors.IncorrectEmail(null)
+                    password.isBlank() -> throw AuthErrors.IncorrectData(null)
+                    name.isBlank() -> throw AuthErrors.IncorrectName(null)
                 }
 
                 useCase.parentRegistration(email = email, password = password, name = name)
